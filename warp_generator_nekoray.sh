@@ -39,7 +39,7 @@ EOM
 conf_base64=$(echo -n "${conf}" | base64 -w 0)
 echo -e "\n\n\n"
 [ -t 1 ] && echo "########## НАЧАЛО КОНФИГА ##########"
-echo "${conf_base64}"
+echo "${conf}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
 
 
