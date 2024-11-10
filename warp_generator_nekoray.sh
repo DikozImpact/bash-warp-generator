@@ -41,7 +41,7 @@ echo "${conf}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
 
 echo "\n"
-echo "Скачать конфиг файлом:"
+echo "Иногда конфиг сверху не полный, поэтому лучше скачивайте по ссылке:"
 echo -e "\n"
 echo "https://immalware.github.io/downloader.html?filename=WARP.conf&content=${conf_base64}"
 echo -e "\n"
