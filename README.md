@@ -11,6 +11,3 @@
 bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_nekoray.sh)
 ```
 4. После того, как конфиг сгенерируется, копируем его, либо скачиваем файлом по ссылке и импортируем в NekoRay!👍
-
-### Другой вопрос?
-Напишите в чат: https://t.me/immalware_chat
