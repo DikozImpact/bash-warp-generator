@@ -40,8 +40,9 @@ echo -e "\n\n\n"
 echo "${conf}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
 
-
-echo "Скачать конфиг файлом: -e \n"
+echo "\n"
+echo "Скачать конфиг файлом:"
+echo -e "\n"
 echo "https://immalware.github.io/downloader.html?filename=WARP.conf&content=${conf_base64}"
 echo -e "\n"
 echo "Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/vpn_1_1_1_1_warp"
