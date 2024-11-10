@@ -25,25 +25,15 @@ client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
 client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 
 conf=$(cat <<-EOM
-[Interface]
-PrivateKey = ${priv}
-S1 = 0
-S2 = 0
-Jc = 4
-Jmin = 40
-Jmax = 70
-H1 = 1
-H2 = 2
-H3 = 3
-H4 = 4
-MTU = 1280
-Address = ${client_ipv4}, ${client_ipv6}
-DNS = 1.1.1.1, 2606:4700:4700::1111, 1.0.0.1, 2606:4700:4700::1001
-
-[Peer]
-PublicKey = ${peer_pub}
-AllowedIPs = 0.0.0.0/0, ::/0
-Endpoint = ${peer_endpoint}
+{
+"tag": "Nekoray",
+"private_key": "${priv}",
+"type": "wireguard",
+"local_address": ["${client_ipv4}", "${client_ipv6}"],
+"peer_public_key": "${peer_pub}",
+"server": "${peer_endpoint}",
+"server_port": 2408
+}
 EOM
 )
 
