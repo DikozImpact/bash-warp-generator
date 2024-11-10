@@ -26,23 +26,23 @@ client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 
 conf=$(cat <<-EOM
 {
-"tag": "Nekoray",
 "private_key": "${priv}",
 "type": "wireguard",
-"local_address": ["${client_ipv4}", "${client_ipv6}"],
+"local_address": ["${client_ipv4}/24", "${client_ipv6}/128"],
 "peer_public_key": "${peer_pub}",
-"server": "${peer_endpoint}",
+"server": "188.114.97.170",
 "server_port": 2408
 }
 EOM
 )
 
+conf_base64=$(echo -n "${conf}" | base64 -w 0)
 echo -e "\n\n\n"
 [ -t 1 ] && echo "########## НАЧАЛО КОНФИГА ##########"
-echo "${conf}"
+echo "${conf_base64}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
 
-conf_base64=$(echo -n "${conf}" | base64 -w 0)
+
 echo "Скачать конфиг файлом: https://immalware.github.io/downloader.html?filename=WARP.conf&content=${conf_base64}"
 echo -e "\n"
 echo "Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/immalware_chat"
