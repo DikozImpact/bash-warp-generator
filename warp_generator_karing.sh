@@ -26,6 +26,7 @@ conf=$(cat <<-EOM
 {
   "outbounds":   [
 {
+"tag": "WARP",
 "fake_packets": "5-10",
 "fake_packets_size": "40-100",
 "fake_packets_delay": "20-250",
