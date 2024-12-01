@@ -24,12 +24,15 @@ client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 reserved64=$(echo "$response" | jq -r '.result.config.client_id')
 reservedHex=$(echo "$reserved64" | base64 -d | hexdump -v -e '/1 "%02x\n"')
 reservedHex=$(echo "${reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
+output=$(curl -sL "https://api.zeroteam.top/warp?format=sing-box" | grep -Eo --color=never '"reserved":\[[0-9]+(,[0-9]+){2}\]')
+	reserved=$(echo "$output" | grep -oP '(\[[0-9]+(,[0-9]+){2}\])' | tr -d '"' | sed 's/"reserved"://')
 
 conf=$(cat <<-EOM
 {
   "outbounds":   [
 {
-"reserved": "${reservedHex}"
+"reserved":"${reserved}",
+"reserved": "${reservedHex}",
 "tag": "WARP",
 "fake_packets": "5-10",
 "fake_packets_size": "40-100",
