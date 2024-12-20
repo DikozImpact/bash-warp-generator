@@ -35,9 +35,7 @@ conf=$(cat <<-EOM
 {
   "outbounds":   [
 {
-"reserved_b64": "${reserved64}",
-"reserved_HEX": "${reservedHex}",
-"reserved_DEC": "${reservedDec}",
+"reserved": "${reserved64}",
 "tag": "WARP",
 "fake_packets": "5-10",
 "fake_packets_size": "40-100",
@@ -63,7 +61,7 @@ echo -e "\n\n\n"
 [ -t 1 ] && echo "########## НАЧАЛО КОНФИГА ##########"
 echo "${conf}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
-
+echo -e "\n "reserved": "${reservedDec}","
 echo -e "\n"
 echo "Иногда конфиг сверху не полный или отсутствует, поэтому лучше скачивайте по ссылке:"
 echo -e "\n"
