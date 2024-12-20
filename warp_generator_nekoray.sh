@@ -22,8 +22,15 @@ peer_endpoint=$(echo "$response" | jq -r '.result.config.peers[0].endpoint.host'
 client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
 client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 
+reserved64=$(echo "$response" | jq -r '.result.config.client_id')
+reservedHex=$(echo "$reserved64" | base64 -d | hexdump -v -e '/1 "%02x\n"')
+reservedDec=$(printf '%s\n' "${reservedHex}" | while read -r hex; do printf "%d, " "0x${hex}"; done)
+reservedDec="[${reservedDec%, }]"
+reservedHex=$(echo "${reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
+
 conf=$(cat <<-EOM
 {
+"reserved": "${reserved64}",
 "private_key": "${priv}",
 "type": "wireguard",
 "local_address": ["${client_ipv4}/24", "${client_ipv6}/128"],
@@ -39,7 +46,8 @@ echo -e "\n\n\n"
 [ -t 1 ] && echo "########## НАЧАЛО КОНФИГА ##########"
 echo "${conf}"
 [ -t 1 ] && echo "########### КОНЕЦ КОНФИГА ###########"
-
+echo "reserved в числах:"
+echo "\"reserved\": \"${reservedDec}\","
 echo -e "\n"
 echo "Иногда конфиг сверху не полный или отсутствует, поэтому лучше скачивайте по ссылке:"
 echo -e "\n"
