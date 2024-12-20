@@ -50,6 +50,13 @@ conf=$(cat <<-EOM
 }
 EOM
 )
+   reserved_str=$(echo "$warp_info" | grep 'client_id' | cut -d\" -f4)
+    reserved_hex=$(echo "$reserved_str" | base64 -d | xxd -p)
+    reserved_dec=$(echo "$reserved_hex" | fold -w2 | while read HEX; do printf '%d ' "0x${HEX}"; done | awk '{print "["$1", "$2", "$3"]"}')
+    echo -e "{\n    \"reserved_dec\": $reserved_dec,"
+    echo -e "    \"reserved_hex\": \"0x$reserved_hex\","
+    echo -e "    \"reserved_str\": \"$reserved_str\"\n}"
+
 
 conf_base64=$(echo -n "${conf}" | base64 -w 0)
 echo -e "\n\n\n"
