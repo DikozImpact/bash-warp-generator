@@ -23,16 +23,21 @@ client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
 client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
 reserved64=$(echo "$response" | jq -r '.result.config.client_id')
 reservedHex=$(echo "$reserved64" | base64 -d | hexdump -v -e '/1 "%02x\n"')
+
+
+reservedDec=$(printf '%s\n' "${reservedHex}" | while read -r hex; do printf "%d, " "0x${hex}"; done)
+## Add brackets and remove trailing comma and space
+reservedDec="[${reservedDec%, }]"
+
 reservedHex=$(echo "${reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
-output=$(curl -sL "https://api.zeroteam.top/warp?format=sing-box" | grep -Eo --color=never '"reserved":\[[0-9]+(,[0-9]+){2}\]')
-	reserved=$(echo "$output" | grep -oP '(\[[0-9]+(,[0-9]+){2}\])' | tr -d '"' | sed 's/"reserved"://')
 
 conf=$(cat <<-EOM
 {
   "outbounds":   [
 {
-"reserved":"${reserved}",
-"reserved": "${reservedHex}",
+"reserved_b64": "${reserved64}",
+"reserved_HEX": "${reservedHex}",
+"reserved_DEC": "${reservedDec}",
 "tag": "WARP",
 "fake_packets": "5-10",
 "fake_packets_size": "40-100",
@@ -50,12 +55,7 @@ conf=$(cat <<-EOM
 }
 EOM
 )
-   reserved_str=$(echo "$warp_info" | grep 'client_id' | cut -d\" -f4)
-    reserved_hex=$(echo "$reserved_str" | base64 -d | xxd -p)
-    reserved_dec=$(echo "$reserved_hex" | fold -w2 | while read HEX; do printf '%d ' "0x${HEX}"; done | awk '{print "["$1", "$2", "$3"]"}')
-    echo -e "{\n    \"reserved_dec\": $reserved_dec,"
-    echo -e "    \"reserved_hex\": \"0x$reserved_hex\","
-    echo -e "    \"reserved_str\": \"$reserved_str\"\n}"
+
 
 
 conf_base64=$(echo -n "${conf}" | base64 -w 0)
