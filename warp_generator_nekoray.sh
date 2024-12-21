@@ -30,6 +30,7 @@ reservedHex=$(echo "${reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print 
 
 conf=$(cat <<-EOM
 {
+"mtu": 1280,
 "reserved": "${reserved64}",
 "private_key": "${priv}",
 "type": "wireguard",
