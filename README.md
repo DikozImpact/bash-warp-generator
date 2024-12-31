@@ -1,5 +1,5 @@
-# Сгенерируйте конфиг Cloudflare WARP для NekoRay и Karing/Hiddify
-Этот bash скрипт сгенерирует конфиг Cloudflare WARP для NekoRay и Karing/Hiddify.
+# Сгенерируйте конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG
+Этот bash скрипт сгенерирует конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG.
 
 Не стоит выполнять его локально, так как РКН заблокировал запросы для получения конфига. Вместо этого лучше выполнять на удалённых серверах.
 
@@ -15,6 +15,10 @@ bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generat
 Для Nekoray:
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_nekoray.sh)
+```
+Для Exclave:
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_exclave.sh)
 ```
 Для AmneziaWG:
 ```bash
