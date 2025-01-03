@@ -83,8 +83,8 @@ conf=$(cat <<-EOM
 }
 EOM
 )
-
 conf_base64=$(echo -n "${conf}" | base64 -w 0)
+clear
 echo -e "\n\n\n"
 [ -t 1 ] && echo "########## НАЧАЛО КОНФИГА ##########"
 echo "${conf}"
