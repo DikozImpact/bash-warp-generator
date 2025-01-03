@@ -26,7 +26,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/ImMALWARE/bash-warp-generator
 ```
 4. После того, как конфиг сгенерируется, копируем его, либо скачиваем файлом по ссылке и импортируем в нужную програму!👍
 
-Дополнительный вариант:
+Дополнительный вариант
 WARP in WARP для Karing/Hiddify:
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_in_warp.sh)
