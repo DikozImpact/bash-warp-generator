@@ -12,10 +12,6 @@
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_karing.sh)
 ```
-WARP in WARP для Karing/Hiddify:
-```bash
-bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_in_warp.sh)
-```
 Для Nekoray:
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_nekoray.sh)
@@ -29,6 +25,12 @@ bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generat
 bash <(wget -qO- https://raw.githubusercontent.com/ImMALWARE/bash-warp-generator/main/warp_generator.sh)
 ```
 4. После того, как конфиг сгенерируется, копируем его, либо скачиваем файлом по ссылке и импортируем в нужную програму!👍
+
+Дополнительный вариант:
+WARP in WARP для Karing/Hiddify:
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_in_warp.sh)
+```
 
 Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/vpn_1_1_1_1_warp 
 
