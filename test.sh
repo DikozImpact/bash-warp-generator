@@ -13,7 +13,6 @@ ins() { curl -s -H 'user-agent:' -H 'content-type: application/json' -X "$1" "${
 sec() { ins "$1" "$2" -H "authorization: Bearer $3" "${@:4}"; }
 response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${pub}\",\"fcm_token\":\"\",\"type\":\"ios\",\"locale\":\"en_US\"}")
 
-clear
 id=$(echo "$response" | jq -r '.result.id')
 token=$(echo "$response" | jq -r '.result.token')
 response=$(sec PATCH "reg/${id}" "$token" -d '{"warp_enabled":true}')
@@ -28,26 +27,22 @@ reservedDec=$(printf '%s\n' "${reservedHex}" | while read -r hex; do printf "%d,
 reservedDec="[${reservedDec%, }]"
 reservedHex=$(echo "${reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
 
-
-2priv="${1:-$(wg genkey)}"
-2pub="${2:-$(echo "${2priv}" | wg pubkey)}"
-api="https://api.cloudflareclient.com/v0i1909051800"
+wpriv="${1:-$(wg genkey)}"
+wpub="${2:-$(echo "${wpriv}" | wg pubkey)}"
 ins() { curl -s -H 'user-agent:' -H 'content-type: application/json' -X "$1" "${api}/$2" "${@:3}"; }
 sec() { ins "$1" "$2" -H "authorization: Bearer $3" "${@:4}"; }
-response=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${2pub}\",\"fcm_token\":\"\",\"type\":\"ios\",\"locale\":\"en_US\"}")
+wresponse=$(ins POST "reg" -d "{\"install_id\":\"\",\"tos\":\"$(date -u +%FT%T.000Z)\",\"key\":\"${wpub}\",\"fcm_token\":\"\",\"type\":\"ios\",\"locale\":\"en_US\"}")
 
-clear
-id=$(echo "$response" | jq -r '.result.id')
-token=$(echo "$response" | jq -r '.result.token')
-response=$(sec PATCH "reg/${id}" "$token" -d '{"warp_enabled":true}')
-2client_ipv4=$(echo "$response" | jq -r '.result.config.interface.addresses.v4')
-2client_ipv6=$(echo "$response" | jq -r '.result.config.interface.addresses.v6')
-
-2reserved64=$(echo "$response" | jq -r '.result.config.client_id')
-2reservedHex=$(echo "${2reserved64}" | base64 -d | hexdump -v -e '/1 "%02x\n"')
-2reservedDec=$(printf '%s\n' "${2reservedHex}" | while read -r hex; do printf "%d, " "0x${hex}"; done)
-2reservedDec="[${2reservedDec%, }]"
-2reservedHex=$(echo "${2reservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
+wid=$(echo "$wresponse" | jq -r '.result.id')
+wtoken=$(echo "$wresponse" | jq -r '.result.token')
+wresponse=$(sec PATCH "reg/${wid}" "$wtoken" -d '{"warp_enabled":true}')
+wclient_ipv4=$(echo "$wresponse" | jq -r '.result.config.interface.addresses.v4')
+wclient_ipv6=$(echo "$wresponse" | jq -r '.result.config.interface.addresses.v6')
+wreserved64=$(echo "$wresponse" | jq -r '.result.config.client_id')
+wreservedHex=$(echo "$wreserved64" | base64 -d | hexdump -v -e '/1 "%02x\n"')
+wreservedDec=$(printf '%s\n' "${wreservedHex}" | while read -r hex; do printf "%d, " "0x${hex}"; done)
+wreservedDec="[${wreservedDec%, }]"
+wreservedHex=$(echo "${wreservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { print }')
 
 
 
@@ -76,10 +71,10 @@ conf=$(cat <<-EOM
    "type": "wireguard",
    "tag": "WARP in WARP",
    "detour": "WARP",
-   "local_address": ["${2client_ipv4}/24", "${2client_ipv6}/128"],
-   "private_key": "${2priv}",
+   "local_address": ["${wclient_ipv4}/24", "${wclient_ipv6}/128"],
+   "private_key": "${wpriv}",
    "peer_public_key": "${peer_pub}",
-   "reserved": ${2reservedDec},
+   "reserved": ${wreservedDec},
    "mtu": 1280,
    "server": "188.114.97.170",
    "server_port": 1018
