@@ -63,4 +63,4 @@ echo "Иногда конфиг сверху не полный или отсут
 echo -e "\n"
 echo "https://immalware.github.io/downloader.html?filename=WARP.conf&content=${conf_base64}"
 echo -e "\n"
-echo "Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/vpn_1_1_1_1_warp"
+echo "Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/warp_1_1_1_1"
