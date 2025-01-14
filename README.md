@@ -1,6 +1,8 @@
 # Сгенерируйте конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG
 ## Вариант 1: Через сайт 
-https://warp-generator.vercel.app/ (Сайт находится на бесплатном хостинге с ограничениями на трафик в месяц, поэтому иногда может быть недоступен)
+https://warp-generator.vercel.app/ 
+
+(Сайт находится на бесплатном хостинге с ограничениями на трафик в месяц, поэтому иногда может быть недоступен)
 
 ## Вариант 2: Aeza Terminator
 Этот bash скрипт сгенерирует конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG.
