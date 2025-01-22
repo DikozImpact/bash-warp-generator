@@ -62,7 +62,7 @@ conf=$(cat <<-EOM
 "fake_packets_mode": "m4",
 "private_key": "${priv}",
 "type": "wireguard",
-"local_address": ["${client_ipv4}/24", "${client_ipv6}/128"],
+"local_address": ["${client_ipv4}/32", "${client_ipv6}/128"],
 "peer_public_key": "${peer_pub}",
 "server": "188.114.97.170",
 "server_port": 500
@@ -71,7 +71,7 @@ conf=$(cat <<-EOM
    "type": "wireguard",
    "tag": "WARP in WARP",
    "detour": "WARP",
-   "local_address": ["${wclient_ipv4}/24", "${wclient_ipv6}/128"],
+   "local_address": ["${wclient_ipv4}/32", "${wclient_ipv6}/128"],
    "private_key": "${wpriv}",
    "peer_public_key": "${peer_pub}",
    "reserved": ${wreservedDec},
