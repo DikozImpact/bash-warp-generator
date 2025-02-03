@@ -1,6 +1,6 @@
 # Сгенерируйте конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG
 ## Вариант 1: Через сайт 
-https://warp-generator.vercel.app/ 
+https://generator-warp.vercel.app/ 
 
 (Сайт находится на бесплатном хостинге с ограничениями на трафик в месяц, поэтому иногда может быть недоступен)
 
