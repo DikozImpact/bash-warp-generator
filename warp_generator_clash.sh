@@ -59,7 +59,7 @@ proxies:
   ip: ${client_ipv4}
   public-key: ${peer_pub}
   allowed-ips: ['0.0.0.0/0']
-  reserved: [${reservedDec}]
+  reserved: ${reservedDec}
   udp: true
   mtu: 1280
   remote-dns-resolve: true
@@ -84,7 +84,7 @@ proxies:
   ip: ${wclient_ipv4}
   public-key: ${peer_pub}
   allowed-ips: ['0.0.0.0/0']
-  reserved: [${wreservedDec}]
+  reserved: ${wreservedDec}
   udp: true
   mtu: 1200
   remote-dns-resolve: true
