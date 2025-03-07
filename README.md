@@ -1,11 +1,11 @@
-# Сгенерируйте конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG
+# Сгенерируйте конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG/Clash
 ## Вариант 1: Через сайт 
 https://generator-warp.vercel.app/ 
 
 (Сайт находится на бесплатном хостинге с ограничениями на трафик в месяц, поэтому иногда может быть недоступен)
 
 ## Вариант 2: Aeza Terminator
-Этот bash скрипт сгенерирует конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG.
+Этот bash скрипт сгенерирует конфиг Cloudflare WARP для NekoRay/Exclave/Karing/Hiddify/AmneziaWG/Clash.
 
 Не стоит выполнять его локально, так как РКН заблокировал запросы для получения конфига. Вместо этого лучше выполнять на удалённых серверах.
 
@@ -25,6 +25,11 @@ bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generat
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/ImMALWARE/bash-warp-generator/main/warp_generator.sh)
 ```
+Для Clash:
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generator/refs/heads/patch-1/warp_generator_clash.sh)
+```
+
 Дополнительный вариант
 WARP in WARP для Karing/Hiddify:
 ```bash
