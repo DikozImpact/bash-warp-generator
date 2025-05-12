@@ -50,8 +50,8 @@ wreservedHex=$(echo "${wreservedHex}" | awk 'BEGIN { ORS=""; print "0x" } { prin
 
 
 conf=$(cat <<-EOM
-proxies: 
-- name: "WARP_"
+proxies:
+- name: "WARP"
   type: wireguard
   private-key: ${priv}
   server: 188.114.96.0
@@ -75,8 +75,8 @@ proxies:
    h4: 3
    h3: 4
    
-- name: "WARP in WARP_"
-  dialer-proxy: WARP_
+- name: "WARP in WARP"
+  dialer-proxy: WARP
   type: wireguard
   private-key: ${wpriv}
   server: 188.114.97.170
@@ -90,19 +90,13 @@ proxies:
   remote-dns-resolve: true
   dns: [1.1.1.1, 1.0.0.1]
   
-proxy-groups: 
-- name: WARP
+proxy-groups:
+- name: Cloudflare
   type: select
   icon: https://developers.cloudflare.com/_astro/logo.p_ySeMR1.svg
   proxies:
-    - WARP_
-  url: 'http://speed.cloudflare.com/'
-  interval: 300
-- name: WARP in WARP
-  type: select
-  icon: https://developers.cloudflare.com/_astro/logo.p_ySeMR1.svg
-  proxies:
-    - WARP in WARP_
+    - WARP
+    - WARP in WARP
   url: 'http://speed.cloudflare.com/'
   interval: 300
 EOM
