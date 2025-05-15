@@ -92,6 +92,6 @@ echo "${conf}"
 
 echo "Иногда конфиг сверху не полный или отсутствует, поэтому лучше скачивайте по ссылке:"
 echo -e "\n"
-echo "https://immalware.github.io/downloader.html?filename=WARP.conf&content=${conf_base64}"
+echo "https://immalware.vercel.app/download?filename=WARP.conf&content=${conf_base64}"
 echo -e "\n"
 echo "Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/warp_1_1_1_1"
