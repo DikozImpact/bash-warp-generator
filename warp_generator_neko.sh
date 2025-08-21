@@ -36,7 +36,7 @@ conf=$(cat <<-EOM
 "type": "wireguard",
 "local_address": ["${client_ipv4}/32", "${client_ipv6}/128"],
 "peer_public_key": "${peer_pub}",
-"server": "188.114.97.0",
+"server": "162.159.192.1",
 "server_port": 500
 }
 EOM
