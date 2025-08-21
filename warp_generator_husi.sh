@@ -38,7 +38,7 @@ conf=$(cat <<-EOM
 "listen_port": 0,
 "peers": [
 {
-"address": "188.114.97.0",
+"address": "162.159.192.1",
 "port": 500,
 "public_key": "${peer_pub}",
 "pre_shared_key": "",
