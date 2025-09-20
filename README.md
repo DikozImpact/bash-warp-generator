@@ -44,4 +44,4 @@ bash <(wget -qO- https://raw.githubusercontent.com/DikozImpact/bash-warp-generat
 > [!NOTE]
 > Что-то не получилось? Есть вопросы? Пишите в чат: https://t.me/warp_1_1_1_1
 >
-> Сделано для [этого гайда](https://docs.google.com/document/d/1DX4X7t7V4QasQJYbps5D1yNtsK7tqsouSMJH2w4AMOY) 
+> Сделано для [этого гайда](https://chatter-bike-3df.notion.site/1f72684dab0d8092a582ed6328632d06) 
